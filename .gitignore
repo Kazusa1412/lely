@@ -16,3 +16,4 @@ gradle-app.setting
 /cpp.dll
 /libs/cpp.dll
 build
+/local.properties

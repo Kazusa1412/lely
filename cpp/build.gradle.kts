@@ -1,3 +1,4 @@
+import com.elouyi.buildutils.localProperties
 
 plugins {
     `cpp-library`
@@ -7,14 +8,20 @@ plugins {
 library {
     dependencies {
     }
-    publicHeaders {
-        from(File("P:\\dev\\env\\jdk\\11\\include"))
 
+    // 在项目根目录的 local.properties 中写入javaHome,与 bin 目录同级
+    // 例如 javaHome=C\:/jdk/11
+    val javaHome by localProperties
+    if (javaHome === null) {
+        System.err.println("需要在 local.properties 中配置 javaHome")
+    }
+    publicHeaders {
+        from(File("$javaHome/include"))
     }
 
     privateHeaders {
-        from(File("P:\\dev\\env\\jdk\\11\\include\\win32"))
-        from(File("P:\\dev\\env\\jdk\\11\\include\\win32\\bridge"))
+        from(File("$javaHome/include/win32"))
+        from(File("$javaHome/include/win32/bridge"))
     }
 }
 
