@@ -57,6 +57,7 @@ char* getLolDir2() {
     return dir;
 }
 
+// 网上抄的 gbk to utf8
 char* Gb2312ToUtf8(char *p){
     DWORD dwNum = MultiByteToWideChar(CP_ACP, 0, p, -1, NULL, 0);
     char *psText;
